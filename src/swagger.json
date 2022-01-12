@@ -1,0 +1,241 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Technologies used: NodeJS, Express & MongoDB",
+        "version": "1.0.0",
+        "title": "This is a TRACKING Application"
+    },
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/admin/createAdmin": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Create new admin",
+                "description": "",
+                "operationId": "Enter details",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Enter details",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "phone": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/admin/authenticate": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "admin authenticate",
+                "description": "",
+                "operationId": "get authenticate",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "verify user",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/admin/sendEmail": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Send Email",
+                "description": "",
+                "operationId": "Send Email",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Send Email",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/admin/resetPassword": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Reset password",
+                "description": "",
+                "operationId": "Reset password",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Reset password",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "resetPasswordToken": {
+                                    "type": "string"
+                                },
+                                "newPassword": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/admin/changePassword": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "Change admin password",
+                "description": "",
+                "operationId": "Change admin password",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "change admin password",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "currentPassword": {
+                                    "type": "string"
+                                },
+                                "newPassword": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/admin/createUser": {
+            "post": {
+                "tags": [
+                    "admin"
+                ],
+                "summary": "New User creation",
+                "description": "",
+                "operationId": "New User creation",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "user creation",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstname": {
+                                    "type": "string"
+                                },
+                                "lastname": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "phone": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "locality": "Sai Nagar",
+                                    "address": "H No-5-113, Madhapur",
+                                    "landmark": "Near Temple",
+                                    "city": "Hyderabad",
+                                    "state": "Telangana",
+                                    "pincode": "500081"
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "responses": {}
+    }
+}
