@@ -33,6 +33,7 @@
     "phantomjs": "^2.1.7",
     "randombytes": "^2.1.0",
     "swagger-jsdoc": "^6.1.0",
+    "swagger-node-codegen": "^1.6.3",
     "swagger-ui-express": "^4.3.0",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",

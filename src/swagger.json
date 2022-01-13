@@ -223,12 +223,16 @@
                                     "type": "string"
                                 },
                                 "address": {
-                                    "locality": "Sai Nagar",
-                                    "address": "H No-5-113, Madhapur",
-                                    "landmark": "Near Temple",
-                                    "city": "Hyderabad",
-                                    "state": "Telangana",
-                                    "pincode": "500081"
+                                    "type": [
+                                        {
+                                            "locality": "Sai Nagar",
+                                            "address": "H No-5-113, Madhapur",
+                                            "landmark": "Near Temple",
+                                            "city": "Hyderabad",
+                                            "state": "Telangana",
+                                            "pincode": "500081"
+                                        }
+                                    ]
                                 }
                             }
                         }

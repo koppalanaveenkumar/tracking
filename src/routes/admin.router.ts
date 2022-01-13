@@ -18,8 +18,9 @@ export default class UserRouter {
         this.router.post('/resetPassword', this.adminController.resetPassword);
         this.router.post('/changePassword', verifyToken, this.adminController.changePassword);
         this.router.post('/userCreate', verifyToken, this.adminController.userCreate);
+        this.router.get("/getAllUsers", verifyToken, this.adminController.getAllUsers)
         this.router.get('/checkUser/:userId', this.adminController.checkUser);
         this.router.post('/createItem', verifyToken, this.adminController.createItem);
-
+        this.router.post('/createOrder', verifyToken, this.adminController.createOrder);
     }
 }

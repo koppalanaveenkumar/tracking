@@ -15,8 +15,8 @@ class EmailSenderService {
     private transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'findnaveenk@gmail.com',
-            pass: 'Rebal$2618'
+            user: '######@gmail.com',
+            pass: '######'
         }
     })
     public sendEmail = (data: any, token?: any) => {
@@ -24,7 +24,7 @@ class EmailSenderService {
             try {
                 let mailOptions: any = {
                     to: data.email,
-                    from: 'findnaveenk@gmail.com',
+                    from: '######@gmail.com',
                     subject: '',
                     html: ''
                 };

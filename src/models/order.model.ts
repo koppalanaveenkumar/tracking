@@ -1,20 +1,24 @@
 import { Schema, model } from "mongoose";
 
 const orderSchema = new Schema({
-    customerid: {
+    customerId: {
         type: Schema.Types.ObjectId,
         required: 'CustomerId is required'
     },
-    itemsid: [{
-        type: Schema.Types.ObjectId,
-        required: 'ItemId is required'
-    }],
+    itemsId: {
+        type: Array,
+        required: 'itemsId is required'
+    },
     itemvalue: {
         type: Schema.Types.String,
         required: 'Item Value is required'
     },
+    orderid: {
+        type: Schema.Types.String,
+        required: 'Orderid is required'
+    },
     status: {
-        type: Schema.Types.Boolean,
+        type: Schema.Types.String,
         default: "in progress..."
     },
     createdAt: {

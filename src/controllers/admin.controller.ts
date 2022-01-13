@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import AdminModel from '../models/admin.model';
 import UserModel from '../models/user.model';
 import ItemModel from '../models/item.model';
+import OrderModel from '../models/order.model';
 import { compare, hash } from "bcryptjs";
 import { sign, verify } from "jsonwebtoken";
 import { commonService } from "../services/common.service";
@@ -11,6 +12,7 @@ import bcrypt from 'bcryptjs';
 import * as crypto from "crypto";
 import 'dotenv/config';
 import config from '../config';
+import { resolveSoa } from 'dns';
 
 export default class Adminoller {
 
@@ -224,6 +226,21 @@ export default class Adminoller {
         }
     };
 
+    public getAllUsers = async (req: any, res: Response) => {
+        try {
+            const adminCheck = await AdminModel.findById(req['tokenId'])
+            if (adminCheck) {
+                const users: any = await UserModel.find();
+                if (users) {
+                    res.status(200).json(users);
+                }
+            } else {
+                res.status(404).json({ adminCheck: true })
+            }
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    }
     public createItem = async (req: any, res: Response) => {
         try {
             const adminCheck = await AdminModel.findById(req['tokenId']);
@@ -247,4 +264,31 @@ export default class Adminoller {
             console.log(err);
         }
     };
+
+    public createOrder = async (req: any, res: Response) => {
+        try {
+            const adminCheck = await AdminModel.findById(req['tokenId']);
+            if (adminCheck) {
+                const userCheck = await UserModel.findById(req.body['customerId']);
+                if (userCheck) {
+                    const itemCheck = await ItemModel.findById(req.body['itemsId']);
+                    console.log("itemCheck", itemCheck)
+                    if (itemCheck) {
+                        const orderid = crypto.randomBytes(8).toString('hex');
+                        const requestBody = {
+                            ...req.body,
+                            orderid: orderid,
+                            lastLoggedIn: moment().unix(),
+                        };
+                        const user = await OrderModel.create(requestBody);
+                        if (user) {
+                            res.status(201).json("Done");
+                        }
+                    }
+                }
+            }
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    }
 }
